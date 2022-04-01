@@ -3,19 +3,21 @@ import frieza from './frieza.png';
 import './frieza.css';
 
 class Frieza extends Component {
-
     state = {
-        bg: ''
-    }
+        bg: '',
+    };
 
     handleClick = () => {
         this.setState({
-            bg: 'bg-danger'
-        })
-    }
+            bg: 'bg-danger',
+        });
+    };
 
     render() {
-     
+        if (this.state.bg !== 'bg-success' &&  this.state.bg !== '') {
+            throw new Error();
+        }
+
         return (
             <div className={`col ${this.state.bg}`}>
                 <img

@@ -3,18 +3,20 @@ import vegeta from './vegeta.png';
 import './vegeta.css';
 
 class Vegeta extends Component {
-
     state = {
-        bg: ''
-    }
+        bg: '',
+    };
 
     handleClick = () => {
         this.setState({
-            bg: 'bg-success'
-        })
-    }
+            bg: 'bg-success',
+        });
+    };
 
     render() {
+        if (this.state.bg !== 'bg-success' &&  this.state.bg !== '') {
+            throw new Error();
+        }
 
         return (
             <div className={`col ${this.state.bg}`}>

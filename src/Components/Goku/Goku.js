@@ -16,6 +16,10 @@ class Goku extends Component {
 
     render() {
 
+        if (this.state.bg !== 'bg-success' &&  this.state.bg !== '') {
+            throw new Error();
+        }
+
         return (
             <div className={`col ${this.state.bg}`}>
                 <img
