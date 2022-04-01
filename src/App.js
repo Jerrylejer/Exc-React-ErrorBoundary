@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Frieza from './Components/Frieza/Frieza';
+import Goku from './Components/Goku/Goku';
+import Vegeta from './Components/Vegeta/Vegeta';
+import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <div className='container text-center'>
+                <h1>Cliquez pour ajouter dans votre panier</h1>
+                <br />
+                <div className='row'>
+                    {/* On enrobe chaque élément avec le component ErrorBoundary afin que la remontée d'erreur n'affecte
+                    que l'élément touché => Stock insuffisant par exemeple */}
+                    <ErrorBoundary>
+                        <Vegeta />
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                        <Goku />
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                        <Frieza />
+                    </ErrorBoundary>
+                </div>
+            </div>
+        );
+    }
 }
-
 export default App;
