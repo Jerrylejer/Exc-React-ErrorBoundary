@@ -1,36 +1,25 @@
 import React, { Component } from 'react';
+import handleClicks from '../handleClicks/handleClicks';
 import goku from './Goku.png';
 import './goku.css';
 
 class Goku extends Component {
 
-    state = {
-        bg: ''
-    }
-
-    handleClick = () => {
-        this.setState({
-            bg: 'bg-success'
-        })
-    }
-
     render() {
 
-        if (this.state.bg !== 'bg-success' &&  this.state.bg !== '') {
-            throw new Error();
-        }
+        const { clickHandler, backGround } = this.props;
 
         return (
-            <div className={`col ${this.state.bg}`}>
+            <div className={`col ${backGround}`}>
                 <img
                     src={goku}
                     alt='Goku'
                     className='goku'
-                    onClick={this.handleClick}
+                    onClick={clickHandler}
                 />
             </div>
         );
     }
 }
 
-export default Goku;
+export default handleClicks(Goku);

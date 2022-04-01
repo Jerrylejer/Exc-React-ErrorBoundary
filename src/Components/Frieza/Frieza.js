@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
+import handleClicks from '../handleClicks/handleClicks';
 import frieza from './frieza.png';
 import './frieza.css';
 
 class Frieza extends Component {
-    state = {
-        bg: '',
-    };
-
-    handleClick = () => {
-        this.setState({
-            bg: 'bg-danger',
-        });
-    };
 
     render() {
-        if (this.state.bg !== 'bg-success' &&  this.state.bg !== '') {
-            throw new Error();
-        }
+
+        const { clickHandler, backGround } = this.props;
 
         return (
-            <div className={`col ${this.state.bg}`}>
+            <div className={`col ${backGround}`}>
                 <img
                     src={frieza}
                     alt='frieza'
                     className='frieza'
-                    onClick={this.handleClick}
+                    onClick={clickHandler}
                 />
             </div>
         );
     }
 }
 
-export default Frieza;
+export default handleClicks(Frieza);

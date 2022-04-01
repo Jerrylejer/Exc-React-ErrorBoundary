@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
+import handleClicks from '../handleClicks/handleClicks';
 import vegeta from './vegeta.png';
 import './vegeta.css';
 
 class Vegeta extends Component {
-    state = {
-        bg: '',
-    };
-
-    handleClick = () => {
-        this.setState({
-            bg: 'bg-success',
-        });
-    };
 
     render() {
-        if (this.state.bg !== 'bg-success' &&  this.state.bg !== '') {
-            throw new Error();
-        }
+
+        const { clickHandler, backGround } = this.props;
 
         return (
-            <div className={`col ${this.state.bg}`}>
+            <div className={`col ${backGround}`}>
                 <img
                     src={vegeta}
                     alt='Vegeta'
                     className='vegeta'
-                    onClick={this.handleClick}
+                    onClick={clickHandler}
                 />
             </div>
         );
     }
 }
 
-export default Vegeta;
+export default handleClicks(Vegeta);
